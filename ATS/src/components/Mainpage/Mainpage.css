@@ -1,0 +1,12 @@
+.branding {
+  color: #f10651;
+  font-weight: bold;
+  text-align: center;
+  font-size : 50px ;
+  
+
+}
+.branding:hover{
+
+ color: blueviolet;
+}
