@@ -1,9 +1,103 @@
 /* General Styles */
+
+/* Profile Container */
+.profile-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-container .profile {
+  color: #000000;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
 .profile:hover {
   padding-left: 15px;
   padding-right: 15px;
   transition: 0.9s;
+} 
+
+.profile-icon {
+  color: #000000; /* Icon color */
+  font-size: 22px;
+  margin-right: 8px;
 }
+
+/* Profile Menu */
+.profile-menu {
+  position: absolute;
+  top: 60px;
+  left: 50%; /* Center relative to parent */
+  transform: translateX(-37%); /* Shift left by half its width */
+  background-color: #04212e;
+  color: #ffffff;
+  border: 3px solid #ffffff;
+  border-radius: 20px;
+  width: 350px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  padding: 10px;
+}
+
+/* Profile Menu Items */
+.profile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profile-menu li {
+  padding: 12px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  border-bottom: 1px solid #c7c3c3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+/* Last item (e.g., Sign Out) styling */
+.profile-menu li:nth-last-child(3) {
+  font-weight: 600; /* Bold text */
+
+  color: #db2424; /* Customize color, e.g., Steel Blue */
+  border-bottom: none; /* Customize as needed */
+}
+.profile-menu li:nth-last-child(2) {
+  font-weight: 600; /* Increase font weight */
+  color:  #ffffff;  /* Choose a color like orange */
+  border-bottom: none; /* Customize as needed */
+}
+.profile-menu li:last-child {
+  border-bottom: none;
+  font-weight: 600;
+
+  
+  color: #14c414; /* Tomato red for Sign Out */
+}
+
+
+/* Hover Effect */
+.profile-menu li:hover {
+  background-color: #fcfcfc;
+  color: rgb(0, 0, 0); /* Gold on hover */
+  
+  
+  border-radius: 20px;
+  padding: 10px 10px;
+}
+
+/* Optional icon styling */
+.profile-menu li i {
+  font-size: 18px;
+  
+}
+
+
+/*navbar */
 .navbar-expand-lg {
   border-radius: 40px; /* Ensure this has a unit */
 }
@@ -17,7 +111,7 @@
 .navbar-content-container {
   border: 3px solid rgb(8, 8, 8);
   border-radius: 40px;
-  background: linear-gradient(90deg, #81b8fa, #8c43bc); /* Use linear gradient instead of background-color */
+  background: linear-gradient(90deg, #f8281d, #e34705); /* Use linear gradient instead of background-color */
   text-align: center;
   max-width: 800px;
   margin: 15px auto;
@@ -42,16 +136,18 @@
 
 /* Dropdown Menu Styles */
 .navbar-content-container .dropdown-menu {
-  background-color: #45494E;
+  background-color: #04212e;
   border-radius: 15px; /* Increased border-radius for a more rounded look */
   padding: 8px 0;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   min-width: 200px;
   font-weight: 100;
+
+
 }
 
 .navbar-content-container .dropdown-item {
-  color: #1E1E1E;
+  color: #ffffff;
   font-weight: bold;
   padding: 10px 15px;
   font-size: 16px;
@@ -62,7 +158,7 @@
 
 .navbar-content-container .dropdown-item:hover {
   background: linear-gradient(90deg, #FDA085, #F6D365);
-  color: #1E1E1E;
+  color: #030303;
   transform: translateX(5px);
 }
 
@@ -83,7 +179,7 @@
   border: none;
   border-radius: 30px;
   font-weight: bold;
-  background-color: rgb(235, 21, 21);
+  background-color: rgb(243, 128, 61);
   color: #1E1E1E;
   padding-left: 35px;
   padding-right: 35px;
@@ -101,7 +197,7 @@
   border: none;
   border-radius: 30px;
   font-weight: bold;
-  background-color: rgb(235, 21, 21);
+  background-color: rgb(243, 128, 61);
   color: #1E1E1E;
   padding-left: 35px;
   padding-right: 35px;
@@ -124,10 +220,10 @@
 
 /* Button Styles */
 .upload-resume-button {
-  border: none; /* Remove border */
+  border: 1px solid rgba(62, 44, 44, 0.016); /* Remove border */
   border-radius: 60px;
   font-weight: bold;
-  background: linear-gradient(90deg, #69075f, #b00fa0);
+  background: linear-gradient(90deg, #871daa, #871daa);
   color: rgb(255, 255, 255);
   margin-right: 6px;
   padding: 5px 15px; /* Add padding for better click area */
@@ -137,7 +233,7 @@
   border: none;
   border-radius: 30px;
   font-weight: bold;
-  background: green; /* Change to violet on hover */
+  background: linear-gradient(90deg, #3e8cc4, #ab0c9b); /* Change to violet on hover */
   color: white;
   transition: 0.9s; 
   border-radius: 30px;
@@ -150,16 +246,17 @@
   border: none; /* Remove border */
   border-radius: 60px;
   font-weight: bold;
-  background: linear-gradient(90deg, #69075f, #b00fa0);
+ background: linear-gradient(90deg, #871daa, #871daa);
   color: rgb(255, 255, 255);
   margin-right: 6px;
   padding: 5px 15px; /* Add padding for better click area */
-}
+} /* Add padding for better click area */
+
 .submit-resume-button:hover{
   border: none;
   border-radius: 30px;
   font-weight: bold;
-  background: green; /* Change to violet on hover */
+  background: linear-gradient(90deg, #3e8cc4, #ab0c9b); /* Change to violet on hover */
   color: white;
   transition: 0.9s; 
   border-radius: 30px;
@@ -167,13 +264,30 @@
   padding-left: 35px;
   padding-right: 35px; 
 }
+/* Navbar.css */
+
+.custom-spinner {
+  color: rgb(255, 255, 255); /* Customize spinner color */
+  width: 2rem; /* Adjust width for size */
+  height: 2rem; /* Adjust height for size */
+  border-width: 10px; /* Increase border width for a thicker spinner */
+  background-color: black;
+}
+
+.custom-visually-hidden {
+  display: none;
+}
+
+
 
 /* Thick Underline for Profile */
 .thick-underline {
   position: relative; /* Needed for absolute positioning of the pseudo-element */
+  
 }
 
 .thick-underline:after {
+  
   content: ''; /* Required for pseudo-elements */
   display: block;
   width: 100%; /* Make it the full width of the text */

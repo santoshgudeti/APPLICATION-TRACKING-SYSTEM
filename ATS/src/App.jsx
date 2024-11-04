@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CreateJobDescription from './components/JobDescription/Create/CreateJobDescription';
 import EditJobDescription from './components/JobDescription/Edit/EditJobDescription';
 import CandidateFiltering from './components/CandidateFiltering/CandidateFiltering';
-import ResumeUpload from './components/Navbar/ResumeUpload';
+
 import Background from './assets/Background.mp4';
-import EndFrame from './assets/EndFrame.jpg';
+import EndFrame from './assets/EndFrame.png';
 
 function App() {
   const [activeComponent, setActiveComponent] = useState('main');

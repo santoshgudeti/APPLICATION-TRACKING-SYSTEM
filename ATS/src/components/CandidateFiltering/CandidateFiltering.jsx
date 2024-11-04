@@ -173,7 +173,7 @@ const CandidateFiltering = () => {
 
   return (
     <div className={`candidate-filtering-container ${isFullScreen ? 'full-screen' : ''}`}>
-      <h2 className="candfil" onDoubleClick={toggleFullScreen}>Candidate Filtering</h2>
+      <h2 className="candfil" style = {{textDecoration :"underline"}}onDoubleClick={toggleFullScreen}>Candidate Filtering</h2>
       <input
         type="text"
         placeholder="Search by skills..."
@@ -248,9 +248,10 @@ const CandidateFiltering = () => {
                 </td>
                 <td>
                   <div className="resume-actions">
-                    <a href={candidate.resume} target="_blank" rel="noopener noreferrer" className="resume-action-button">View</a>
+                    <a href={candidate.resume} target="_blank" rel="noopener noreferrer" className="resume-action-button">View</a><br></br>
                     <a href={candidate.resume} download={getResumeFilename(candidate)} className="resume-action-button">Download</a>
                   </div>
+                  
                 </td>
               </tr>
             ))}
