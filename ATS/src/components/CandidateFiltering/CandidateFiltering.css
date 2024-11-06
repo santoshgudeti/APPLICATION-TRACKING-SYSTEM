@@ -5,32 +5,31 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.95); /* Light background */
+  background-color: rgba(240, 240, 240, 0.95); /* Light grey background */
   z-index: 1000;
   padding: 20px;
-  overflow: hidden; /* Prevent default scrolling */
+  overflow: hidden;
 }
 
 /* Scrollable container for the table */
 .table-container {
-  height: calc(100vh - 60px); /* Adjust based on your header height */
-  overflow-y: auto; /* Enable vertical scrolling */
-  margin-top: 20px; /* Space above the table */
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  margin-top: 20px;
 }
 
 /* Container styling */
 .candidate-filtering-container {
   margin: 20px auto;
   padding: 20px;
-  max-width: 900px; /* Increased max-width for better layout */
-  background: linear-gradient(90deg, #a429cd, #ab0c9b);
+  max-width: 900px;
+  background: linear-gradient(90deg, #006d77, #83c5be); /* Teal gradient */
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
-  display: flex; /* Flexbox for better alignment */
-  flex-direction: column; /* Column layout */
-  align-items: center; /* Center align items */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #ffffff;
- 
 }
 
 /* Input styling */
@@ -38,13 +37,11 @@
   width: 100%;
   padding: 10px;
   border-radius: 5px;
-  border: 5px solid #070707;
+  border: 3px solid #0a9396;
   margin-bottom: 20px;
-
-  color:#ffffff;
+  color: #ffffff;
   font-weight: bold;
-  background-color: #080303;
-  border-radius: 30px;
+  background-color: #14213d;
 }
 
 /* Table styling */
@@ -56,35 +53,74 @@
 
 .candidate-table th {
   padding: 10px;
-  background: #0b2f40;; /* Header color */
-  color: white;
+  background: #14213d; /* Darker blue header */
+  color: #e5e5e5;
   text-align: left;
-  border: 3px solid white;
+  border: 3px solid #3a3a3a;
 }
 
 .candidate-table td {
   padding: 10px;
   text-align: left;
-  border: 3px solid #080303;
+  border: 3px solid #14213d;
 }
 
 /* Row styling */
 .candidate-table tbody tr {
   transition: background-color 0.3s, transform 0.1s;
-  background: linear-gradient(90deg, #3e8cc4, #ab0c9b); /* Light background for rows */
+  background: linear-gradient(90deg, #007f91, #66c2a1); /* Soft gradient row */
 }
 
 .candidate-table tbody tr:hover {
-  background-color: white; /* Background color on hover */
-  color: black; /* Text color on hover */
+  background-color: #e5e5e5; /* Light grey on hover */
+  color: #14213d;
 }
 
-/* Score Circle Styling */
+
+.resume-actions {
+  align-items: center;
+  justify-content: center;
+}
+
+/* Special content styling */
+.content123 {
+  background-color: #9a031e;
+  color: #e5e5e5;
+}
+
+/* Portal background */
+.portal {
+  background-image: url('./path/to/image3.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 200vh;
+}
+
 .score-circle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 80px; /* Adjusted for better visibility */
+  height: 80px;
+  background: conic-gradient(
+    #00d084 0%, /* Green for 0-50% */
+    #ffcc00 50%, /* Orange for 50-80% */
+    #ff4d4d 80% /* Red for 80-100% */
+  );
+  border-radius: 50%;
+  border: 8px solid transparent; /* Invisible border */
+  background-clip: padding-box; /* Ensures the border doesn't overlap the circle */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Soft shadow */
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  cursor: pointer; /* Pointer cursor on hover */
+  animation: spin 10s linear infinite; /* Continuous spin for circle */
+}
+
+.score-circle:hover {
+  transform: scale(1.2) rotate(360deg); /* Scale up and rotate on hover */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Brighten glow on hover */
 }
 
 .score-circle svg {
@@ -93,46 +129,48 @@
 
 .score-text {
   position: absolute;
-  font-size: 12px;
+  font-size: 16px; /* Increased font size for better visibility */
   font-weight: bold;
-  color: #0d2683;
+  color: #ffffff;
+  z-index: 1; /* Ensure text is always on top */
 }
 
-/* Color styling for filter buttons */
-.filtertexts {
-  color: rgb(236, 236, 239);
-  border: none;
-  padding: none;
-  background-color: #859318;
+/* Keyframes for continuous spinning effect */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.filtertexts:hover {
-  color: #76c6dc; /* Hover color */
+/* Glowing effect for border */
+.score-circle::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+  animation: glow 2s infinite alternate; /* Glowing effect */
 }
 
-/* Color for specific columns */
-.NAME,
-.EXPERIENCE,
-.SKILLS,
-.score-circle {
-  background: white;
-  color: black;
-}
-.resume-actions{
-  align-items: center;
-  justify-content: center;
+@keyframes glow {
+  0% { box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); }
+  100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); }
 }
 
-.content123 {
-  background-color: rgb(166, 36, 36);
-  color: rgb(236, 229, 229);
-}
+/* Responsive styling for smaller screens */
+@media (max-width: 600px) {
+  .score-circle {
+    width: 60px;
+    height: 60px;
+  }
 
-/* Portal background image */
-.portal {
-  background-image: url('./path/to/image3.jpg');
-  background-size: cover;
-  background-repeat: no-repeat; /* Corrected to prevent repetition */
-  background-position: center;
-  height: 200vh; /* Height to accommodate the content */
+  .score-text {
+    font-size: 12px;
+  }
 }

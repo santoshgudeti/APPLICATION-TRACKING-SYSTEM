@@ -136,20 +136,23 @@ const CandidateFiltering = () => {
       status: 'Passed',
       resume: 'resume-williamgarcia.pdf',
     },
+    // Additional candidates ...
   ]);
 
   const calculateScore = (candidate) => {
-    let experienceScore = candidate.experience >= 5 ? 100 : candidate.experience >= 2 ? 50 : 0;
-    let skillsScore = ['JavaScript', 'React', 'Node.js'].filter(skill => candidate.skills.includes(skill)).length / 3 * 100;
-    let locationScore = candidate.location === 'New York' ? 100 : 0;
-    let availabilityScore = candidate.availability === 'Immediate' ? 100 : 0;
+    const experienceScore = candidate.experience >= 5 ? 100 : candidate.experience >= 2 ? 50 : 0;
+    const skillsScore = ['JavaScript', 'React', 'Node.js']
+      .filter(skill => candidate.skills.includes(skill)).length / 3 * 100;
+    const locationScore = candidate.location === 'New York' ? 100 : 0;
+    const availabilityScore = candidate.availability === 'Immediate' ? 100 : 0;
 
     return (experienceScore + skillsScore + locationScore + availabilityScore) / 4;
   };
 
-  candidates.forEach(candidate => {
-    candidate.score = calculateScore(candidate);
-  });
+  const candidatesWithScores = candidates.map(candidate => ({
+    ...candidate,
+    score: calculateScore(candidate),
+  }));
 
   const toggleFullScreen = () => setIsFullScreen(!isFullScreen);
 
@@ -161,10 +164,10 @@ const CandidateFiltering = () => {
     );
   };
 
-  const filteredCandidates = candidates.filter(candidate => {
-    return (candidate.skills.toLowerCase().includes(filterText.toLowerCase()) && 
-            (filterStatus === 'all' || candidate.status.toLowerCase() === filterStatus));
-  });
+  const filteredCandidates = candidatesWithScores.filter(candidate =>
+    candidate.skills.toLowerCase().includes(filterText.toLowerCase()) &&
+    (filterStatus === 'all' || candidate.status.toLowerCase() === filterStatus)
+  );
 
   const getResumeFilename = (candidate) => {
     const fileExtension = candidate.resume.split('.').pop();
@@ -173,7 +176,9 @@ const CandidateFiltering = () => {
 
   return (
     <div className={`candidate-filtering-container ${isFullScreen ? 'full-screen' : ''}`}>
-      <h2 className="candfil" style = {{textDecoration :"underline"}}onDoubleClick={toggleFullScreen}>Candidate Filtering</h2>
+      <h2 className="candfil" style={{ textDecoration: "underline" }} onDoubleClick={toggleFullScreen}>
+        Candidate Filtering
+      </h2>
       <input
         type="text"
         placeholder="Search by skills..."
@@ -182,7 +187,6 @@ const CandidateFiltering = () => {
         className="filter-input"
       />
 
-      {/* Scrollable table container */}
       <div className="table-container">
         <table className="candidate-table">
           <thead>
@@ -204,54 +208,62 @@ const CandidateFiltering = () => {
             {filteredCandidates.map((candidate, index) => (
               <tr key={candidate.id}>
                 <td>{index + 1}</td>
-                <td className="NAME" onDoubleClick={() => handleCellEdit(candidate.id, 'name', prompt("Edit Name:", candidate.name))}>
+                <td onDoubleClick={() => handleCellEdit(candidate.id, 'name', prompt("Edit Name:", candidate.name))}>
                   {candidate.name}
                 </td>
-                <td className="EMAIL" onDoubleClick={() => handleCellEdit(candidate.id, 'email', prompt("Edit Email:", candidate.email))}>
+                <td onDoubleClick={() => handleCellEdit(candidate.id, 'email', prompt("Edit Email:", candidate.email))}>
                   {candidate.email}
                 </td>
-                <td className="DESIGNATION" onDoubleClick={() => handleCellEdit(candidate.id, 'designation', prompt("Edit Designation:", candidate.designation))}>
+                <td onDoubleClick={() => handleCellEdit(candidate.id, 'designation', prompt("Edit Designation:", candidate.designation))}>
                   {candidate.designation}
                 </td>
-                <td className="COMPANY" onDoubleClick={() => handleCellEdit(candidate.id, 'companyName', prompt("Edit Company Name:", candidate.companyName))}>
+                <td onDoubleClick={() => handleCellEdit(candidate.id, 'companyName', prompt("Edit Company Name:", candidate.companyName))}>
                   {candidate.companyName}
                 </td>
-                <td className="EXPERIENCE" onDoubleClick={() => handleCellEdit(candidate.id, 'experience', prompt("Edit Experience:", candidate.experience))}>
+                <td onDoubleClick={() => handleCellEdit(candidate.id, 'experience', prompt("Edit Experience:", candidate.experience))}>
                   {candidate.experience}
                 </td>
-                <td className="SKILLS" onDoubleClick={() => handleCellEdit(candidate.id, 'skills', prompt("Edit Skills:", candidate.skills))}>
+                <td onDoubleClick={() => handleCellEdit(candidate.id, 'skills', prompt("Edit Skills:", candidate.skills))}>
                   {candidate.skills}
                 </td>
-                <td className="LOCATION" onDoubleClick={() => handleCellEdit(candidate.id, 'location', prompt("Edit Location:", candidate.location))}>
+                <td onDoubleClick={() => handleCellEdit(candidate.id, 'location', prompt("Edit Location:", candidate.location))}>
                   {candidate.location}
                 </td>
-                <td className="AVAILABILITY" onDoubleClick={() => handleCellEdit(candidate.id, 'availability', prompt("Edit Availability:", candidate.availability))}>
+                <td onDoubleClick={() => handleCellEdit(candidate.id, 'availability', prompt("Edit Availability:", candidate.availability))}>
                   {candidate.availability}
                 </td>
                 <td>
-                  <div className="score-circle">
-                    <svg width="72" height="72">
-                      <circle cx="36" cy="36" r="32" fill="none" stroke="#e0e0e0" strokeWidth="10" />
-                      <circle
-                        cx="36"
-                        cy="36"
-                        r="32"
-                        fill="none"
-                        stroke={candidate.score >= 70 ? 'green' : candidate.score >= 50 ? 'orange' : 'red'}
-                        strokeWidth="4"
-                        strokeDasharray={`${candidate.score * 0.1} ${100 - candidate.score * 0.1}`}
-                        strokeDashoffset="25"
-                      />
-                    </svg>
-                    <span>{candidate.score.toFixed(2)}</span>
-                  </div>
+                          <div className="score-circle">
+                <svg width="72" height="72">
+                <circle
+                cx="36"
+                cy="36"
+                r="32"
+                fill="none"
+                stroke="#e0e0e0" // Background circle (gray)
+                strokeWidth="10"
+                />
+                <circle
+                cx="36"
+                cy="36"
+                r="32"
+                fill="none"
+                stroke={candidate.score >= 70 ? 'green' : candidate.score >= 50 ? 'orange' : 'red'}
+                strokeWidth="4"
+                strokeDasharray={`${candidate.score * 3.6} ${360 - candidate.score * 3.6}`} // Progress bar based on score
+                strokeDashoffset="25" // Start position for the circle (shifted by 25 to start from top)
+                />
+                </svg>
+                <span>{candidate.score.toFixed(2)}%</span> {/* Display score */}
+                </div>
+
+
                 </td>
                 <td>
                   <div className="resume-actions">
                     <a href={candidate.resume} target="_blank" rel="noopener noreferrer" className="resume-action-button">View</a><br></br>
                     <a href={candidate.resume} download={getResumeFilename(candidate)} className="resume-action-button">Download</a>
                   </div>
-                  
                 </td>
               </tr>
             ))}

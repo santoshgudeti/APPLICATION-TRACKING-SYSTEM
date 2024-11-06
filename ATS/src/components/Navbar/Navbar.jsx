@@ -29,10 +29,9 @@ const Navbar = ({ onComponentChange, handleResumeUpload }) => {
 
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate loading delay
-
       console.log("Submitting selected files:", selectedFiles);
-      handleResumeUpload(selectedFiles);
-      setSelectedFiles([]);
+      handleResumeUpload(selectedFiles); // Pass files to App.js
+      setSelectedFiles([]); // Clear the files after upload
     } catch (error) {
       console.error("File submission failed:", error);
     } finally {
@@ -46,45 +45,44 @@ const Navbar = ({ onComponentChange, handleResumeUpload }) => {
 
   return (
     <nav className="navbar navbar-expand-lg">
-    <div className="container-fluid">
-      <span>
-        <img
-          style={{
-            height: "70px",
-            width: "70px",
-            marginRight: "30px",
-            objectFit: "cover",
-            border: "3px solid black", // Border color and width
-            borderRadius: "50%",       // Makes the image round
-          }}
-          src={SMlogo}
-          alt="Logo"
-        />
-      </span>
+      <div className="container-fluid">
+        <span>
+          <img
+            style={{
+              height: "70px",
+              width: "70px",
+              marginRight: "30px",
+              objectFit: "cover",
+              border: "3px solid black",
+              borderRadius: "50%",
+            }}
+            src={SMlogo}
+            alt="Logo"
+          />
+        </span>
 
-    
+        <div className="profile-container" onClick={toggleProfileMenu}>
+          <span style={{ color: "black", fontSize: '20px', fontWeight: 'bold' }} className="profile d-flex align-items-center thick-underline">
+            <FaUser style={{ marginRight: '10px' }} className="profile-icon" />
+            Profile
+          </span>
 
-    <div className="profile-container" onClick={toggleProfileMenu}>
-      <span style={{ color: "black", fontSize: '20px', fontWeight: 'bold' }} className="profile d-flex align-items-center thick-underline">
-        <FaUser style={{ marginRight: '10px' }} className="profile-icon" />
-        Profile
-      </span>
-
-      {showProfileMenu && (
-        <div className="profile-menu">
-          <ul>
-            <li><FaUser /> Name: Ganga</li>
-            <li><FaEnvelope /> Email: ganga@example.com</li>
-            <li><FaPhone /> Contact: +1234567890</li>
-            <li><FaBuilding /> Company: Example Inc.</li>
-            <li onClick={() => alert('Open Settings')}><FaCog /> Settings</li>
-            <li onClick={() => alert('Sign Out')}><FaSignOutAlt /> Sign Out</li>
-            <li>Or</li>
-            <li onClick={() => alert('Sign in another account')}><FaSignInAlt /> Sign in another account</li>
-          </ul>
+          {showProfileMenu && (
+            <div className="profile-menu">
+              <ul>
+                <li><FaUser /> Name: Ganga</li>
+                <li><FaEnvelope /> Email: ganga@example.com</li>
+                <li><FaPhone /> Contact: +1234567890</li>
+                <li><FaBuilding /> Company: Example Inc.</li>
+                <li onClick={() => alert('Open Settings')}><FaCog /> Settings</li>
+                <li onClick={() => alert('Sign Out')}><FaSignOutAlt /> Sign Out</li>
+                <li>Or</li>
+                <li onClick={() => alert('Sign in another account')}><FaSignInAlt /> Sign in another account</li>
+              </ul>
+            </div>
+          )}
         </div>
-      )}
-    </div>
+
         <div className="navbar-content-container">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item dropdown">
@@ -116,14 +114,6 @@ const Navbar = ({ onComponentChange, handleResumeUpload }) => {
                   </a>
                 </li>
               </ul>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link candidate-filtering-link"
-                onClick={() => onComponentChange('candidateFiltering')}
-              >
-                Candidate Filtering
-              </a>
             </li>
 
             <button

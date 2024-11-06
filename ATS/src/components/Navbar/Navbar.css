@@ -31,12 +31,13 @@
   top: 60px;
   left: 50%; /* Center relative to parent */
   transform: translateX(-37%); /* Shift left by half its width */
-  background-color: #04212e;
-  color: #ffffff;
+ background-color: #04212e;
+ 
+  color: #fffdfd;
   border: 3px solid #ffffff;
   border-radius: 20px;
   width: 350px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 5px 5px 30px rgb(255, 255, 255);
   z-index: 1000;
   padding: 10px;
 }
@@ -109,16 +110,18 @@
 
 /* Navbar Styles */
 .navbar-content-container {
-  border: 3px solid rgb(8, 8, 8);
+  border: 3px solid rgb(255, 246, 246);
   border-radius: 40px;
-  background: linear-gradient(90deg, #f8281d, #e34705); /* Use linear gradient instead of background-color */
+  background: radial-gradient(circle at center, 
+  cyan, rgb(113, 168, 241), cyan),50% ; /* Use linear gradient instead of background-color */
   text-align: center;
   max-width: 800px;
+
   margin: 15px auto;
   display: flex;
   flex-direction: column; /* Align items in a column */
   align-items: center; /* Center items horizontally */
-  padding: 10px; /* Add padding for better spacing */
+  padding: 5px; /* Add padding for better spacing */
 }
 
 .navbar-nav {
@@ -136,12 +139,13 @@
 
 /* Dropdown Menu Styles */
 .navbar-content-container .dropdown-menu {
-  background-color: #04212e;
+  background: linear-gradient(90deg, #3e8cc4, #ab0c9b);
   border-radius: 15px; /* Increased border-radius for a more rounded look */
   padding: 8px 0;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 8px rgb(255, 255, 255);
   min-width: 200px;
   font-weight: 100;
+  border:white;
 
 
 }
@@ -179,29 +183,11 @@
   border: none;
   border-radius: 30px;
   font-weight: bold;
-  background-color: rgb(243, 128, 61);
-  color: #1E1E1E;
+  background-color: rgb(60, 69, 163);
+  color: #ffffff;
   padding-left: 35px;
   padding-right: 35px;
-  transition: 0.9s;
-}
-
-/* Candidate Filtering Styles */
-.nav-item .candidate-filtering-link {
-  color: #1E1E1E;
-  font-weight: bold; /* Default color */
-  font-size: 18px;
-}
-
-.nav-item .candidate-filtering-link:hover {
-  border: none;
-  border-radius: 30px;
-  font-weight: bold;
-  background-color: rgb(243, 128, 61);
-  color: #1E1E1E;
-  padding-left: 35px;
-  padding-right: 35px;
-  transition: 0.9s;
+  transition: 0.6s;
 }
 
 /* Job Description Page Styles */
@@ -220,13 +206,15 @@
 
 /* Button Styles */
 .upload-resume-button {
-  border: 1px solid rgba(62, 44, 44, 0.016); /* Remove border */
+ /* Remove border */
   border-radius: 60px;
   font-weight: bold;
-  background: linear-gradient(90deg, #871daa, #871daa);
+  background: linear-gradient(90deg, #3e8cc4, #ab0c9b);
   color: rgb(255, 255, 255);
   margin-right: 6px;
   padding: 5px 15px; /* Add padding for better click area */
+  border:2px  rgb(255, 236, 236);
+  box-shadow: 2px 3px 15px rgb(240, 237, 237);
 }
 
 .upload-resume-button:hover {
@@ -243,10 +231,12 @@
 
 }
 .submit-resume-button{
-  border: none; /* Remove border */
+  border:2px  rgb(255, 236, 236);
+  box-shadow: 2px 3px 15px rgb(240, 237, 237);
+
   border-radius: 60px;
   font-weight: bold;
- background: linear-gradient(90deg, #871daa, #871daa);
+  background: linear-gradient(90deg, #3e8cc4, #ab0c9b);
   color: rgb(255, 255, 255);
   margin-right: 6px;
   padding: 5px 15px; /* Add padding for better click area */
