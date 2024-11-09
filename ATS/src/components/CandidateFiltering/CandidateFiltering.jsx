@@ -261,8 +261,8 @@ const CandidateFiltering = () => {
                 </td>
                 <td>
                   <div className="resume-actions">
-                    <a href={candidate.resume} target="_blank" rel="noopener noreferrer" className="resume-action-button">View</a><br></br>
-                    <a href={candidate.resume} download={getResumeFilename(candidate)} className="resume-action-button">Download</a>
+                    <a href={candidate.resume} target="_blank" rel="noopener noreferrer" className="resume-action-view">View</a><br></br>
+                    <a href={candidate.resume} download={getResumeFilename(candidate)} className="resume-action-download">Download</a>
                   </div>
                 </td>
               </tr>

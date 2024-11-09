@@ -1,0 +1,89 @@
+.registration-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #8a00e0, #d04ed6);
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  color: #fff;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #f8f8ff;
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+  color: #f0eaff;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #b08cd7;
+  border-radius: 6px;
+  background: #fafafa;
+  transition: border-color 0.3s;
+}
+
+.form-field input:focus {
+  border-color: #bb6bd9;
+  outline: none;
+}
+
+.form-field input[type="file"] {
+  border: none;
+  background-color: #f2f2f2;
+}
+
+button.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #007bff, #004aad);
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button.submit-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #002f7f);
+}
+
+button.submit-btn:focus {
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .registration-form {
+    padding: 15px;
+  }
+
+  .form-field input {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  button.submit-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+.form-field-button .submit-buton{
+  align-items: center;
+  background-color: white;
+
+}

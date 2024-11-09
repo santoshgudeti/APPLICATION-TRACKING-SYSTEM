@@ -77,11 +77,100 @@
 }
 
 
-.resume-actions {
+.resume-action-view{
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  margin-left: 15px;
+  color:rgb(255, 255, 255);
+  padding: 4px 15px;
+  border:20px;
+  background-color: #000000;
+  margin-bottom:20px;
+  border-radius:30px;
+  
 }
+.resume-action-view:hover{
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin-left: 15px;
+  color:rgb(0, 0, 0);
+  padding: 4px 15px;
+  border:20px;
+  background-color: #ffffff;
+  margin-bottom:20px;
+  border-radius:30px;
+}
+.resume-action-download{
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+ 
+  align-items: center;
+  appearance: none;
+  background-color: #3EB2FD;
+  background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+  background-size: calc(100% + 20px) calc(100% + 20px);
+  border-radius: 100px;
+  border-width: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: CircularStd, sans-serif;
+  font-size: 1rem;
+  height: auto;
+  justify-content: center;
+  line-height: 1.5;
+  margin-top: 10px;
+  padding: 4px 15px;
+  position: relative;
+  text-align: center;
+ 
 
+  transition: background-color .2s, background-position .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+.resume-action-download:hover{
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color:black;  
+  align-items: center;
+  appearance: none;
+  background-color: #3EB2FD;
+  background-image: linear-gradient(1deg, #7b82fd, #55a6db 99%);
+  background-size: calc(100% + 20px) calc(100% + 20px);
+  border-radius: 100px;
+  border-width: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+
+  cursor: pointer;
+  display: inline-flex;
+  font-family: CircularStd, sans-serif;
+  font-size: 1rem;
+  height: auto;
+  justify-content: center;
+  line-height: 1.5;
+  margin-top:10px;
+  padding: 4px 15px;
+  position: relative;
+  text-align: center;
+
+  transition: background-color .2s, background-position .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
 /* Special content styling */
 .content123 {
   background-color: #9a031e;

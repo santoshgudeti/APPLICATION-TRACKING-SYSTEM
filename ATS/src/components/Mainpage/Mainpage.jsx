@@ -1,14 +1,10 @@
 import React from 'react'
 import './Mainpage.css'
-
-
 function Mainpage() {
   
   return (
-    <div
-      className='branding'></div>
-
+<div></div>
   );
 }
 
-export default Mainpage
+export default Mainpage;

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Mainpage from './components/Mainpage/Mainpage';
@@ -6,15 +6,15 @@ import Sidebar from './components/Mainpage/Sidebar/Sidebar';
 import CreateJobDescription from './components/JobDescription/Create/CreateJobDescription';
 import EditJobDescription from './components/JobDescription/Edit/EditJobDescription';
 import CandidateFiltering from './components/CandidateFiltering/CandidateFiltering';
-import KPIStatistics from './components/KPIStatistics/KPIStatistics';
+import RegistrationForm from './components/RegistrationForm/RegistrationForm'; // Added RegistrationForm import
 import Background from './assets/Background.mp4';
 import EndFrame from './assets/EndFrame.png';
-import Image3 from './assets/image3.jpg';
 
 function App() {
   const [activeComponent, setActiveComponent] = useState('main');
   const [showEndFrame, setShowEndFrame] = useState(false);
   const [resumeData, setResumeData] = useState([]);
+  const [showRegistrationForm, setShowRegistrationForm] = useState(false); // State to show registration form
   const videoRef = useRef(null);
 
   const handleComponentChange = (component) => {
@@ -24,6 +24,7 @@ function App() {
   const handleResumeUpload = (data) => {
     if (data && data.length > 0) {
       setResumeData(data);
+      setShowRegistrationForm(true); // Show RegistrationForm after uploading a resume
     } else {
       console.warn("No data available from resume upload.");
     }
@@ -78,27 +79,30 @@ function App() {
           <Sidebar onComponentChange={handleComponentChange} />
         </div>
 
-        {/* Second section with static background image */}
+        {/* Conditional display of RegistrationForm after resume upload */}
         <div
-          
+          style={{
+            paddingTop: '60px',
+            paddingBottom: '20px',
+            position: 'relative',
+            zIndex: 1,
+            background: 'rgba(255, 255, 255, 0.8)', // Optional: Semi-transparent background
+          }}
         >
-          <KPIStatistics candidateData={resumeData} totalResumes={resumeData.length} activeJobs={activeJobs} shortlisted={shortlisted} />
-
-          <div style={{ paddingTop: '60px', paddingBottom: '20px' }}>
-            {activeComponent === 'candidateFiltering' && <CandidateFiltering data={resumeData} />}
-            {activeComponent === 'createJob' && <CreateJobDescription />}
-            {activeComponent === 'editJob' && <EditJobDescription />}
-            {activeComponent === 'main' && <Mainpage />}
-            {resumeData.length > 0 && <ResumeDataDisplay data={resumeData} />}
-          </div>
-
-          <Routes>
-            <Route path="/job-description/create" element={<CreateJobDescription />} />
-            <Route path="/job-description/edit" element={<EditJobDescription />} />
-            {/* Add a default route for the root path */}
-            <Route path="/" element={<Mainpage />} />
-          </Routes>
+          {activeComponent === 'candidateFiltering' && <CandidateFiltering data={resumeData} />}
+          {activeComponent === 'createJob' && <CreateJobDescription />}
+          {activeComponent === 'editJob' && <EditJobDescription />}
+          {activeComponent === 'main' && <Mainpage />}
+          {resumeData.length > 0 && <ResumeDataDisplay data={resumeData} />}
+          {showRegistrationForm && <RegistrationForm />} {/* Show RegistrationForm only after resume upload */}
         </div>
+
+        <Routes>
+          <Route path="/job-description/create" element={<CreateJobDescription />} />
+          <Route path="/job-description/edit" element={<EditJobDescription />} />
+          <Route path="/" element={<Mainpage />} />
+          <Route path="/registration" element={<RegistrationForm />} /> 
+        </Routes>
       </div>
     </Router>
   );
@@ -113,4 +117,3 @@ const ResumeDataDisplay = ({ data }) => {
 };
 
 export default App;
-  

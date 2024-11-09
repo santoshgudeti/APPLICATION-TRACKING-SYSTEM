@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
-import SMlogo from '../../assets/SMlogo.png';
 import { FaUser, FaEnvelope, FaPhone, FaBuilding, FaCog, FaSignOutAlt, FaSignInAlt } from 'react-icons/fa';
-
+import SMlogo from '../../assets/SMlogo.png';
 import './Navbar.css';
 
 const Navbar = ({ onComponentChange, handleResumeUpload }) => {
@@ -9,6 +8,7 @@ const Navbar = ({ onComponentChange, handleResumeUpload }) => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [showRegistrationForm, setShowRegistrationForm] = useState(false);  // State for Registration Form
 
   const handleFileSelect = (event) => {
     const newFiles = Array.from(event.target.files);
@@ -28,10 +28,12 @@ const Navbar = ({ onComponentChange, handleResumeUpload }) => {
     setLoading(true);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate loading delay
+      // Simulate a delay to mimic API submission
+      await new Promise((resolve) => setTimeout(resolve, 2000)); 
       console.log("Submitting selected files:", selectedFiles);
       handleResumeUpload(selectedFiles); // Pass files to App.js
       setSelectedFiles([]); // Clear the files after upload
+      setShowRegistrationForm(true); // Show the registration form after successful upload
     } catch (error) {
       console.error("File submission failed:", error);
     } finally {
@@ -41,6 +43,11 @@ const Navbar = ({ onComponentChange, handleResumeUpload }) => {
 
   const toggleProfileMenu = () => {
     setShowProfileMenu((prev) => !prev);
+  };
+
+  const navigateToRegistrationForm = () => {
+    // Handle navigation or redirect to registration form
+    alert('Navigating to Registration Form!');
   };
 
   return (
@@ -157,6 +164,16 @@ const Navbar = ({ onComponentChange, handleResumeUpload }) => {
           </ul>
         </div>
       </div>
+
+      {/* Conditionally Render Registration Form */}
+      {showRegistrationForm && (
+       
+         
+          <button onClick={navigateToRegistrationForm}>
+          
+          </button>
+        
+      )}
     </nav>
   );
 };
